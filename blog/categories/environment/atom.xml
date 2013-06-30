@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: environment | jhvaras]]></title>
+  <link href="http://varas.github.io/blog/categories/environment/atom.xml" rel="self"/>
+  <link href="http://varas.github.io/"/>
+  <updated>2013-06-30T21:41:46+02:00</updated>
+  <id>http://varas.github.io/</id>
+  <author>
+    <name><![CDATA[jhvaras]]></name>
+    <email><![CDATA[jhvaras@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Productive environment for PHP teams - I]]></title>
+    <link href="http://varas.github.io/blog/2013/06/30/productive-environment-for-php-teams/"/>
+    <updated>2013-06-30T22:09:00+02:00</updated>
+    <id>http://varas.github.io/blog/2013/06/30/productive-environment-for-php-teams</id>
+    <content type="html"><![CDATA[<p>As PHP developers we are usually getting things done, to be prouctive. Getting things done is the main reason for chosing PHP by software companies.</p>
+
+<p>How can we improve our code quality while keeping the productivity?</p>
+
+<!--more-->
+
+
+<p><em>Code-Reuse</em></p>
+
+<p>Since its 5.3 version PHP has become a more popular due to a bunch of rich features. Namespaces landed on PHP and one of the bests improvements since that has been <a href="http://getcomposer.org">Composer</a>.</p>
+
+<p>Most of us (PHP devs) use Composer to get libraries packed on our projects avoiding dependency troubleshooting. But why not using it locally?</p>
+
+<p>We can get a reuse environment on your team/office avoiding duplicated code and becoming people more productive. Assuming people will code components many other benefits will apply:</p>
+
+<ul>
+<li>Members get knowledge once they grab a component</li>
+<li>We get decoupled and reusable functionalities</li>
+<li>Testing might be applied on functionalities</li>
+<li>Code may be easily refactored</li>
+<li>Bug tracking/solving is eased</li>
+<li>Fixes may be applied to all projects</li>
+<li>Versioning of components can be applied</li>
+<li>Good practices arise</li>
+</ul>
+
+
+<p>If you don&rsquo;t mind how to get this work, next post will cover how to create and use local packages using <em>Git</em> repositories.</p>
+]]></content>
+  </entry>
+  
+</feed>
