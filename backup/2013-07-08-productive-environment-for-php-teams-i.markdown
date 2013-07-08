@@ -28,5 +28,4 @@ We can get a reuse environment on your team/office avoiding duplicated code and 
 
 If you don’t mind how to get this work, next post will cover how to create and use local packages using [Satis](https://github.com/composer/satis)  to generate a local composer reposotory throught local *Git* repositories. 
 
-You can even improve the result adding a private GitHub flavored interface [GitList](http://gitlist.org/)
- 
+You can even improve the result adding a private GitHub flavored interface [GitList](http://gitlist.org/)  
