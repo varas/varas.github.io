@@ -4,25 +4,25 @@
   <title><![CDATA[Category: good-practices | jhvaras]]></title>
   <link href="http://varas.github.io/blog/categories/good-practices/atom.xml" rel="self"/>
   <link href="http://varas.github.io/"/>
-  <updated>2013-07-01T00:18:52+02:00</updated>
+  <updated>2013-07-08T22:41:23+02:00</updated>
   <id>http://varas.github.io/</id>
   <author>
-    <name><![CDATA[jhvaras]]></name>
+    <name><![CDATA[jhvaras.com]]></name>
     <email><![CDATA[jhvaras@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Productive environment for PHP teams - I]]></title>
-    <link href="http://varas.github.io/blog/2013/06/30/productive-environment-for-php-teams/"/>
-    <updated>2013-06-30T22:09:00+02:00</updated>
-    <id>http://varas.github.io/blog/2013/06/30/productive-environment-for-php-teams</id>
+    <title type="html"><![CDATA[Productive Environment for PHP Teams - I]]></title>
+    <link href="http://varas.github.io/blog/2013/07/08/productive-environment-for-php-teams-i/"/>
+    <updated>2013-07-08T22:20:00+02:00</updated>
+    <id>http://varas.github.io/blog/2013/07/08/productive-environment-for-php-teams-i</id>
     <content type="html"><![CDATA[<p>As PHP developers we are usually getting things done, to be prouctive. Getting things done is the main reason for chosing PHP by software companies.</p>
 
 <p>How can we improve our code quality while keeping the productivity?</p>
 
-<!--more-->
+<!-- more -->
 
 
 <p><em>Code-Reuse</em></p>
@@ -45,7 +45,7 @@
 </ul>
 
 
-<p>If you don&rsquo;t mind how to get this work, next post will cover how to create and use local packages using <em>Git</em> repositories.</p>
+<p>If you don’t mind how to get this work, next post will cover how to create and use local packages using <em>Git</em> repositories.</p>
 ]]></content>
   </entry>
   
