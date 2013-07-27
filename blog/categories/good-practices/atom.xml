@@ -4,16 +4,24 @@
   <title><![CDATA[Category: good-practices | jhvaras]]></title>
   <link href="http://varas.github.io/blog/categories/good-practices/atom.xml" rel="self"/>
   <link href="http://varas.github.io/"/>
+<<<<<<< HEAD
   <updated>2013-07-27T19:50:12+02:00</updated>
   <id>http://varas.github.io/</id>
   <author>
     <name><![CDATA[jhvaras]]></name>
+=======
+  <updated>2013-07-08T22:41:23+02:00</updated>
+  <id>http://varas.github.io/</id>
+  <author>
+    <name><![CDATA[jhvaras.com]]></name>
+>>>>>>> f4d0e484af7efdb16e8952926f4d46870d61fdaf
     <email><![CDATA[jhvaras@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[Productive Environment for PHP Teams - II]]></title>
     <link href="http://varas.github.io/blog/productive-environment-for-php-teams-ii/"/>
     <updated>2013-07-25T13:53:00+02:00</updated>
@@ -116,6 +124,13 @@ bin/satis build satis.json /path/to/the/composer/repository
     <updated>2013-07-08T22:20:00+02:00</updated>
     <id>http://varas.github.io/blog/productive-environment-for-php-teams-i</id>
     <content type="html"><![CDATA[<p>As PHP developers we are usually getting things done to be productive. Getting things done fast is the main reason for chosing PHP by many software companies. This fact usually makes PHP devs to get out low quality code.</p>
+=======
+    <title type="html"><![CDATA[Productive Environment for PHP Teams - I]]></title>
+    <link href="http://varas.github.io/blog/2013/07/08/productive-environment-for-php-teams-i/"/>
+    <updated>2013-07-08T22:20:00+02:00</updated>
+    <id>http://varas.github.io/blog/2013/07/08/productive-environment-for-php-teams-i</id>
+    <content type="html"><![CDATA[<p>As PHP developers we are usually getting things done, to be prouctive. Getting things done is the main reason for chosing PHP by software companies.</p>
+>>>>>>> f4d0e484af7efdb16e8952926f4d46870d61fdaf
 
 <p>How can we improve our code quality while keeping the productivity?</p>
 
@@ -142,9 +157,13 @@ bin/satis build satis.json /path/to/the/composer/repository
 </ul>
 
 
+<<<<<<< HEAD
 <p>If you don’t mind how to get this work, next post will cover how to create and use local packages using <a href="https://github.com/composer/satis">Satis</a>  to generate a local composer reposotory throught local <em>Git</em> repositories.</p>
 
 <p>You can even improve the result adding a private GitHub flavored interface <a href="http://gitlist.org/">GitList</a></p>
+=======
+<p>If you don’t mind how to get this work, next post will cover how to create and use local packages using <em>Git</em> repositories.</p>
+>>>>>>> f4d0e484af7efdb16e8952926f4d46870d61fdaf
 ]]></content>
   </entry>
   
