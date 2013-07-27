@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://varas.github.io/blog/productive-environment-for-php-teams-i/</loc>
+        <lastmod>2013-07-27T18:38:59+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://varas.github.io/blog/productive-environment-for-php-teams-ii/</loc>
+        <lastmod>2013-07-27T19:50:06+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://varas.github.io/blog/archives/</loc>
+        <lastmod>2013-07-27T19:50:06+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://varas.github.io/</loc>
+        <lastmod>2013-07-27T19:50:06+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://varas.github.io/robots.txt</loc>
+        <lastmod>2013-07-25T13:05:02+02:00</lastmod>
+    </url>
+</urlset>

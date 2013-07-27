@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: productivity | jhvaras]]></title>
+  <link href="http://varas.github.io/blog/categories/productivity/atom.xml" rel="self"/>
+  <link href="http://varas.github.io/"/>
+  <updated>2013-07-27T19:50:12+02:00</updated>
+  <id>http://varas.github.io/</id>
+  <author>
+    <name><![CDATA[jhvaras]]></name>
+    <email><![CDATA[jhvaras@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Productive Environment for PHP Teams - II]]></title>
+    <link href="http://varas.github.io/blog/productive-environment-for-php-teams-ii/"/>
+    <updated>2013-07-25T13:53:00+02:00</updated>
+    <id>http://varas.github.io/blog/productive-environment-for-php-teams-ii</id>
+    <content type="html"><![CDATA[<p>Previous post shown the reasons to host a local Composer repository. So, let&rsquo;s get dirty!</p>
+
+<h1>Setting up a local Composer respository</h1>
+
+<h2>Install Composer</h2>
+
+<p>If you didn&rsquo;t previously:
+<code>sh
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+</code></p>
+
+<h2>Install Satis</h2>
+
+<p><code>sh
+composer create-project composer/satis --stability=dev
+cd satis
+</code></p>
+
+<p>At this point you can generate a <code>package.json</code> through Satis in order to use a local repository.
+To generate a <strong>Composer-repo</strong> from a <strong>Git-repo</strong> the only requirement is to have a <em>valid <code>composer.json</code> on the root folder at master branch</em>.</p>
+
+<h2>Add a composer.json file to your Git repo</h2>
+
+<p>Composer helps you to do this:
+<code>sh
+composer init
+</code></p>
+
+<h2>Generate a Composer-repo from your Git-repo</h2>
+
+<p>All you need is to edit a <code>satis.json</code> file
+``` json satis.json
+{</p>
+
+<pre><code>"name": "jhvaras/example",
+"homepage": "http://example.local",
+"description": "Example description here",
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "/path/to/the/git/repository"
+    }
+],
+"require-all": true
+</code></pre>
+
+<p>}
+<code>
+And generate the Composer repo:
+</code> bash
+bin/satis build satis.json /path/to/the/composer/repository
+```</p>
+
+<p>And you are done!!!</p>
+
+<h1>Install from your Composer repository</h1>
+
+<p>Edit your <code>composer.json</code>, add your <em>require package name</em> and the local repo, which you can publish through <em>http</em> in order to be accesed locally:</p>
+
+<p>``` json your-project/composer.json
+&ldquo;require&rdquo;:{</p>
+
+<pre><code>    "jhvaras/example":"dev-master"
+},
+</code></pre>
+
+<p>&ldquo;repositories&rdquo;: [ { &ldquo;type&rdquo;:&ldquo;composer&rdquo;, &ldquo;url&rdquo;:&ldquo;<a href="http://your_composer_repo.local">http://your_composer_repo.local</a>&rdquo; } ]
+```</p>
+
+<p>You can avoid coping the repositories line by adding the repository to the default reposiitories:</p>
+
+<p>``` json ~/.composer/config.json
+{</p>
+
+<pre><code>"repositories": [
+    {
+        "type":"composer",
+        "url":"http://git.local2"
+    }
+]
+</code></pre>
+
+<p>}
+```</p>
+
+<h1>Improving the environment</h1>
+
+<p>This is quite complex just to get a private Composer repo, so next post in this serie will cover how to automate this tasks, and get a local GitHub working.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Productive Environment for PHP Teams - I]]></title>
+    <link href="http://varas.github.io/blog/productive-environment-for-php-teams-i/"/>
+    <updated>2013-07-08T22:20:00+02:00</updated>
+    <id>http://varas.github.io/blog/productive-environment-for-php-teams-i</id>
+    <content type="html"><![CDATA[<p>As PHP developers we are usually getting things done to be productive. Getting things done fast is the main reason for chosing PHP by many software companies. This fact usually makes PHP devs to get out low quality code.</p>
+
+<p>How can we improve our code quality while keeping the productivity?</p>
+
+<!-- more -->
+
+
+<p><em>Code-Reuse</em></p>
+
+<p>Since its 5.3 version PHP has become a more popular due to a bunch of rich features. Namespaces landed on PHP and one of the bests improvements since that has been <a href="http://getcomposer.org">Composer</a>.</p>
+
+<p>Most of us (PHP devs) use Composer to get libraries packed on our projects avoiding dependency troubleshooting. But why not using it locally?</p>
+
+<p>We can get a reuse environment on your team/office avoiding duplicated code and becoming people more productive. Assuming people will code components many other benefits will apply:</p>
+
+<ul>
+<li>Members get knowledge once they grab a component</li>
+<li>We get decoupled and reusable functionalities</li>
+<li>Testing might be applied on functionalities</li>
+<li>Code may be easily refactored</li>
+<li>Bug tracking/solving is eased</li>
+<li>Fixes may be applied to all projects</li>
+<li>Versioning of components can be applied</li>
+<li>Good practices arise</li>
+</ul>
+
+
+<p>If you don’t mind how to get this work, next post will cover how to create and use local packages using <a href="https://github.com/composer/satis">Satis</a>  to generate a local composer reposotory throught local <em>Git</em> repositories.</p>
+
+<p>You can even improve the result adding a private GitHub flavored interface <a href="http://gitlist.org/">GitList</a></p>
+]]></content>
+  </entry>
+  
+</feed>
