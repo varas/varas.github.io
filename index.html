@@ -121,124 +121,13 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/productive-environment-for-php-teams-ii/" itemprop="url">Productive Environment for PHP Teams - II</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Previous post shown the reasons to host a local Composer repository. So, let&rsquo;s get dirty!</p>
+		<p>Previous post shown the reasons to host a local Composer repository. This will show the code to accomplish that point.</p>
 
-<h1>Setting up a local Composer respository</h1>
+<p>Let&rsquo;s get dirty!</p>
 
-<h2>Install Composer</h2>
-
-<p>If you didn&rsquo;t previously:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>curl -sS https://getcomposer.org/installer | php
-</span><span class='line'>mv composer.phar /usr/local/bin/composer
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Install Satis</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>composer create-project composer/satis --stability<span class="o">=</span>dev
-</span><span class='line'><span class="nb">cd </span>satis
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At this point you can generate a <code>package.json</code> through Satis in order to use a local repository.
-To generate a <strong>Composer-repo</strong> from a <strong>Git-repo</strong> the only requirement is to have a <em>valid <code>composer.json</code> on the root folder at master branch</em>.</p>
-
-<h2>Add a composer.json file to your Git repo</h2>
-
-<p>Composer helps you to do this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>composer init
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Generate a Composer-repo from your Git-repo</h2>
-
-<p>All you need is to edit a <code>satis.json</code> file</p>
-
-<figure class='code'><figcaption><span>satis.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;jhvaras/example&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;homepage&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.local&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Example description here&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;repositories&quot;</span><span class="p">:</span> <span class="p">[</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vcs&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/the/git/repository&quot;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">],</span>
-</span><span class='line'>    <span class="nt">&quot;require-all&quot;</span><span class="p">:</span> <span class="kc">true</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And generate the Composer repo:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>bin/satis build satis.json /path/to/the/composer/repository
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And you are done!!!</p>
-
-<h1>Install from your Composer repository</h1>
-
-<p>Edit your <code>composer.json</code>, add your <em>require package name</em> and the local repo, which you can publish through <em>http</em> in order to be accesed locally:</p>
-
-<figure class='code'><figcaption><span>your-project/composer.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="s2">&quot;require&quot;</span><span class="err">:</span><span class="p">{</span>
-</span><span class='line'>        <span class="nt">&quot;jhvaras/example&quot;</span><span class="p">:</span><span class="s2">&quot;dev-master&quot;</span>
-</span><span class='line'>    <span class="p">}</span><span class="err">,</span>
-</span><span class='line'><span class="s2">&quot;repositories&quot;</span><span class="err">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;composer&quot;</span><span class="p">,</span> <span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://your_composer_repo.local&quot;</span> <span class="p">}</span> <span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can avoid coping the repositories line by adding the repository to the default reposiitories:</p>
-
-<figure class='code'><figcaption><span>~/.composer/config.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;repositories&quot;</span><span class="p">:</span> <span class="p">[</span>
-</span><span class='line'>        <span class="p">{</span>
-</span><span class='line'>            <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;composer&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://git.local2&quot;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">]</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Improving the environment</h1>
-
-<p>This is quite complex just to get a private Composer repo, so next post in this serie will cover how to automate this tasks, and get a local GitHub working.</p>
 
 		
-		
+		<a href="/blog/productive-environment-for-php-teams-ii/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
@@ -303,6 +192,19 @@ Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Sha
 })(jQuery);
 </script> <!-- Delete or comment this line to disable Fancybox -->
 
+
+<script type="text/javascript">
+      var disqus_shortname = 'jhvaras';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
