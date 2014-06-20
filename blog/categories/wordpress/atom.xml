@@ -4,7 +4,7 @@
   <title><![CDATA[Category: wordpress | jhvaras]]></title>
   <link href="http://varas.github.io/blog/categories/wordpress/atom.xml" rel="self"/>
   <link href="http://varas.github.io/"/>
-  <updated>2014-06-20T19:49:10+02:00</updated>
+  <updated>2014-06-20T19:57:34+02:00</updated>
   <id>http://varas.github.io/</id>
   <author>
     <name><![CDATA[jhvaras]]></name>
@@ -122,7 +122,7 @@ shell: wp db export {{ backup_path }}/{{ item[0] }}.{{ timestamp.stdout }}.sql
 
 <p>First make a small task manually, then automate it. Second add complex manually, then:</p>
 
-<p><a href="/images/automate_all_the_things.jpg">Automate all the things!</a></p>
+<blockquote><p>Automate all the things!</p></blockquote>
 ]]></content>
   </entry>
   
