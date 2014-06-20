@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: wordpress | jhvaras]]></title>
+  <link href="http://varas.github.io/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://varas.github.io/"/>
+  <updated>2014-06-20T19:49:10+02:00</updated>
+  <id>http://varas.github.io/</id>
+  <author>
+    <name><![CDATA[jhvaras]]></name>
+    <email><![CDATA[jhvaras@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Automate your Wordpress farm backups &amp; updates]]></title>
+    <link href="http://varas.github.io/blog/automate-your-wordpress-farm-backups-and-updates/"/>
+    <updated>2014-06-19T18:40:00+02:00</updated>
+    <id>http://varas.github.io/blog/automate-your-wordpress-farm-backups-and-updates</id>
+    <content type="html"><![CDATA[<p>This maybe usefull if you are responsible of a high number of Wordpress sites.</p>
+
+<h2>Concept</h2>
+
+<p>The target here is to <strong>backup</strong> &amp; <strong>update</strong> (core, db and plugins) a Wordpress farm, i mean, a bunch of different Wps over several servers.</p>
+
+<!-- more -->
+
+
+<h2>Tools</h2>
+
+<p>In case your servers run PHP v5.3+ you may know <a href="http://www.wp-cli.org">wp-cli</a>, if not, go try! <strong>wp-cli</strong> allows you to run different Wp tasks on command-line, so great point to automate.</p>
+
+<p>My tool of choice to manage servers is <a href="http://www.ansible.com">Ansible</a>, an infrastructure automation tool, simple and to the point.</p>
+
+<h2>Approach</h2>
+
+<p>We want to set the servers and paths, and path to the backups. We want to have one in case any update breaks something. Also we may need a name for the backup files.</p>
+
+<blockquote><p>So we need to associate a <strong>name</strong> and a <strong>path</strong> to each Wp <strong>host</strong>.</p></blockquote>
+
+<h3>Structured data per host on Ansible</h3>
+
+<p>In order to accomplish such a <strong>structured data per host</strong> on Ansible I didn&rsquo;t find any proper way, as the inventory file doesn&rsquo;t to support this. I opened a <a href="https://github.com/ansible/ansible/issues/7800">Feature request</a> for that.</p>
+
+<p>After trying several <em>dict</em> approaches, my solution, was to associate the host on a <em>list</em> (I couldn&rsquo;t make a dict to work), through a var-name relation such as:</p>
+
+<p>```</p>
+
+<pre><code># inventory
+111.111.111.111 server=hostingA
+
+# vars
+hostingA
+- [ 
+    domain1.tld ,
+    /var/www/vhosts/domain1.tld/httpdocs/blog 
+  ]
+- [ ...
+</code></pre>
+
+<p>```</p>
+
+<p>You can test this with the <em>debug</em> command:</p>
+
+<p>
+```</p>
+
+<pre><code>debug: host={{ item }} msg="host {{ inventory_hostname }} - var_server {{ server }} - var_name {{ item[0] }}"
+  with_nested: server
+</code></pre>
+
+<p>```
+</p>
+
+<h2>Tasks</h2>
+
+<p>Now the data per host is set and we can target as follows:</p>
+
+<p>
+```</p>
+
+<pre><code>shell: wp db export {{ backup_path }}/{{ item[0] }}.sql
+    chdir={{ item[1] }}
+    with_nested: server
+</code></pre>
+
+<p>```
+</p>
+
+<p>This lacks a nice informative timestamp.</p>
+
+<h3>Timestamps on Ansible</h3>
+
+<p>Again Ansible doesn&rsquo;t provide a standarized way of timestamp. There is another <a href="https://github.com/ansible/ansible/issues/2454">Feature Request</a>, closed, but it is recently taking relevance.</p>
+
+<p>So I managed to get it from a register:</p>
+
+<p>
+```</p>
+
+<pre><code>shell: date '+%Y_%m_%d_%H%M'
+    register: timestamp
+</code></pre>
+
+<p>```
+</p>
+
+<p>Now we can make a proper log name such as:</p>
+
+<p>
+<code>
+shell: wp db export {{ backup_path }}/{{ item[0] }}.{{ timestamp.stdout }}.sql
+</code>
+</p>
+
+<p>I made a <a href="https://github.com/varas/ansible_wp_cli/blob/master/tasks/main.yml">playbook</a> to install <strong>wp-cli</strong>, <strong>backup</strong> Wp files &amp; db, and <strong>update</strong> Wp core, db &amp; plugins.</p>
+
+<h2>Results</h2>
+
+<p>You can take a look to the final role available at <a href="https://github.com/varas/ansible_wp_cli">Github</a>.</p>
+
+<p>First make a small task manually, then automate it. Second add complex manually, then:</p>
+
+<p><a href="/images/automate_all_the_things.jpg">Automate all the things!</a></p>
+]]></content>
+  </entry>
+  
+</feed>
